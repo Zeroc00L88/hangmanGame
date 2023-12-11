@@ -1,0 +1,131 @@
+:root {
+    --header-height: 50px;
+}
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: lightgray;
+}
+
+.window {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    left: 50%;
+    top: 50%;
+    margin: -200px -300px;
+    max-width: 600px;
+    max-height: 400px;
+    width: 100%;
+    height: 100%;
+    z-index: 99;
+    background: rgba(0, 0, 0, 0.9);
+    border: 1px solid black;
+    box-shadow: 0px 0px 15px 5px rgba(0, 0, 0, 0.5);
+    font-size: 40px;
+    color: white;
+}
+
+.hidden {
+    display: none;
+}
+
+h2 {
+    font-size: 30px;
+}
+#startWin button {
+    padding: 10px;
+}
+
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: var(--header-height);
+}
+
+main {
+    background-image: url(../images/medievalBG.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    height: calc(100vh - var(--header-height));
+    min-width: 100%;
+}
+
+#hangman {
+    position: relative;
+    height: 65%;
+}
+
+#hangman div {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: bottom;
+}
+
+#hangman div img {
+    padding-left: 12%;
+    padding-top: 2%;
+}
+
+#secretWord {
+    height: 50px;
+    background: rgba(0, 0, 0, 0.5);
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    font-size: 40px;
+    font-weight: bold;
+    color: white;
+}
+
+#entryField {
+    height: 32%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-top: 30px;
+    align-items: center;
+}
+
+#entryField > div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+#entryField p {
+    font-size: 40px;
+    border: 2px solid grey;
+    width: 40px;
+    border-radius: 5px;
+    text-align: center;
+    color: grey;
+}
+
+#entryField p:hover {
+    color: white;
+    border: 2px solid white;
+    cursor: pointer;
+}
+#secondRow {
+    padding-left: 30px;
+}
+#thirdRow {
+    padding-right: 100px;
+}
