@@ -21,8 +21,6 @@ const words = [
     "Tomate",
 ];
 
-let keyPressed;
-
 const play = document.querySelector("#playButton");
 const startWin = document.querySelector("#startWin");
 const secretWord = document.querySelector("#secretWord");
@@ -41,22 +39,26 @@ const getRandom = (min, max) => {
 
 const getRandomWord = (array) => {
     let word = array[getRandom(0, array.length - 1)];
-    return word;
+    return Array.from(word);
 };
 
-const anonymisedWord = (word) => {
-    let arrayWord = Array.from(word);
-    let anonArray = arrayWord.map((e) => (e = "_"));
-    return anonArray;
-};
-
-const getKeyValue = () => {
+const checkKey = () => {
     keys.forEach((elmt) => {
         elmt.addEventListener("click", () => {
-            keyPressed = elmt.innerHTML;
+            console.log(elmt.innerHTML);
+            elmt.style.color = "rgba(0, 0, 0, 0)";
         });
     });
 };
-const game = () => { };
+
+const game = () => {
+    getRandomWord(words).forEach((elmt) => {
+        let chara = document.createElement("p");
+        chara.innerHTML = "_";
+        secretWord.appendChild(chara);
+    });
+};
+
+game();
 
 // startGame();
