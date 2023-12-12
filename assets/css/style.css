@@ -7,7 +7,7 @@
 }
 
 body {
-    background: #f89461;
+    background: #f99d64;
 }
 
 .window {
@@ -18,7 +18,7 @@ body {
     align-items: center;
     gap: 15px;
     left: 50%;
-    top: 50%;
+    top: 35%;
     margin: -200px -300px;
     max-width: 600px;
     max-height: 400px;
@@ -89,23 +89,27 @@ main {
 }
 #secretWord {
     height: 50px;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.7);
     width: 80%;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 15px;
-    font-size: 40px;
-    font-weight: bold;
-    color: white;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
 #entryField > div {
     display: flex;
-    flex-direction: row;
     align-items: center;
     justify-content: center;
+    gap: 10px;
+}
+#vkbd {
+    display: flex;
+    flex-direction: column;
+}
+#vkbd div {
+    display: flex;
     gap: 10px;
 }
 
@@ -118,19 +122,23 @@ main {
     color: lightgray;
 }
 
-#entryField p:hover {
+#vkbd p:hover {
     color: white;
     border: 2px solid white;
     cursor: pointer;
+    background: rgba(255, 255, 255, 0.4);
 }
+
 #secretWord > p {
     color: white;
     border: none;
+    font-size: 40px;
+    font-weight: bold;
 }
 
 #secondRow {
     padding-left: 30px;
 }
 #thirdRow {
-    padding-right: 100px;
+    padding-right: 130px;
 }

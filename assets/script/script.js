@@ -44,21 +44,42 @@ const getRandomWord = (array) => {
     return Array.from(word);
 };
 
+const displayHangman = (counter) => {
+    imgDiv = document.querySelectorAll("#hangman div img");
+    imgDiv[counter].classList.remove("hidden");
+};
+
 const checkKey = (word) => {
+    let falseCount = 0;
     keys.forEach((elmt) => {
-        elmt.addEventListener("click", () => {
-            elmt.style.color = "rgba(0, 0, 0, 0)";
-            idx = word.indexOf(elmt.innerHTML);
-            if (idx != -1) {
-                while (idx != -1) {
-                    console.log(elmt.innerHTML);
-                    console.log(idx);
-                    let charChange = document.querySelectorAll("#secretWord p");
-                    charChange[idx].innerHTML = elmt.innerHTML;
-                    idx = word.indexOf(elmt.innerHTML, idx + 1);
+        elmt.addEventListener(
+            "click",
+            () => {
+                elmt.style.color = "rgba(0, 0, 0, 0)";
+                idx = word.indexOf(elmt.innerHTML);
+                if (idx != -1) {
+                    while (idx != -1) {
+                        console.log(elmt.innerHTML);
+                        console.log(idx);
+                        let charChange =
+                            document.querySelectorAll("#secretWord p");
+                        charChange[idx].innerHTML = elmt.innerHTML;
+                        idx = word.indexOf(elmt.innerHTML, idx + 1);
+                    }
+                } else {
+                    if (falseCount < 8) {
+                        displayHangman(falseCount);
+                        falseCount++;
+                    } else {
+                        displayHangman(falseCount);
+                        setTimeout(() => {
+                            alert("vous avez perdu");
+                        }, 1000);
+                    }
                 }
-            }
-        });
+            },
+            { once: true },
+        );
     });
 };
 
