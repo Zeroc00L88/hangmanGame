@@ -1,128 +1,94 @@
 <!doctype html>
 <html lang="fr">
-    <head>
-        <title></title>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link href="./assets/css/style.css" rel="stylesheet" />
-    </head>
 
-    <body>
-        <header>
-            <h1>Jeu du Pendu</h1>
-        </header>
-        <main>
-            <div id="startWin" class="window">
-                <h2>Bienvenue sur ce Jeu du Pendu</h2>
-                <button type="button" id="playButton">Lancer le Jeu</button>
+<head>
+    <title></title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="./assets/css/style.css" rel="stylesheet" />
+</head>
+
+<body>
+    <header>
+        <h1>Jeu du Pendu</h1>
+    </header>
+    <main>
+        <div id="startWin" class="window">
+            <h2>Bienvenue sur ce Jeu du Pendu</h2>
+            <button type="button" id="playButton">Lancer le Jeu</button>
+        </div>
+        <div id="restartWin" class="window hidden">
+            <h2>Vous avez perdu :(</h2>
+            <button type="button" id="lostRestartButton">Rejouer</button>
+        </div>
+        <div id="hangman">
+            <div>
+                <img class="hidden" src="./assets/images/hangman01.png" alt="hangman01" />
             </div>
-            <div id="lostWin" class="window hidden">
-                <h2>Vous avez perdu :(</h2>
-                <button type="button" id="lostRestartButton">Rejouer</button>
+            <div>
+                <img class="hidden" src="./assets/images/hangman02.png" alt="hangman02" />
             </div>
-            <div id="hangman">
-                <div>
-                    <img
-                        class="hidden"
-                        src="./assets/images/hangman01.png"
-                        alt="hangman01"
-                    />
-                </div>
-                <div>
-                    <img
-                        class="hidden"
-                        src="./assets/images/hangman02.png"
-                        alt="hangman02"
-                    />
-                </div>
-                <div>
-                    <img
-                        class="hidden"
-                        src="./assets/images/hangman03.png"
-                        alt="hangman03"
-                    />
-                </div>
-                <div>
-                    <img
-                        class="hidden"
-                        src="./assets/images/hangman04.png"
-                        alt="hangman04"
-                    />
-                </div>
-                <div>
-                    <img
-                        class="hidden"
-                        src="./assets/images/hangman05.png"
-                        alt="hangman05"
-                    />
-                </div>
-                <div>
-                    <img
-                        class="hidden"
-                        src="./assets/images/hangman06.png"
-                        alt="hangman06"
-                    />
-                </div>
-                <div>
-                    <img
-                        class="hidden"
-                        src="./assets/images/hangman07.png"
-                        alt="hangman07"
-                    />
-                </div>
-                <div>
-                    <img
-                        class="hidden"
-                        src="./assets/images/hangman08.png"
-                        alt="hangman08"
-                    />
-                </div>
-                <div>
-                    <img
-                        class="hidden"
-                        src="./assets/images/hangman09.png"
-                        alt="hangman09"
-                    />
-                </div>
+            <div>
+                <img class="hidden" src="./assets/images/hangman03.png" alt="hangman03" />
             </div>
-            <div id="entryField">
-                <div id="secretWord"></div>
-                <div id="vkbd">
-                    <div id="firstRow">
-                        <p class="key">A</p>
-                        <p class="key">Z</p>
-                        <p class="key">E</p>
-                        <p class="key">R</p>
-                        <p class="key">T</p>
-                        <p class="key">Y</p>
-                        <p class="key">U</p>
-                        <p class="key">I</p>
-                        <p class="key">O</p>
-                        <p class="key">P</p>
-                    </div>
-                    <div id="secondRow">
-                        <p class="key">Q</p>
-                        <p class="key">S</p>
-                        <p class="key">D</p>
-                        <p class="key">F</p>
-                        <p class="key">G</p>
-                        <p class="key">H</p>
-                        <p class="key">J</p>
-                        <p class="key">K</p>
-                        <p class="key">L</p>
-                        <p class="key">M</p>
-                    </div>
-                    <div id="thirdRow">
-                        <p class="key">W</p>
-                        <p class="key">X</p>
-                        <p class="key">C</p>
-                        <p class="key">V</p>
-                        <p class="key">B</p>
-                        <p class="key">N</p>
-                    </div>
+            <div>
+                <img class="hidden" src="./assets/images/hangman04.png" alt="hangman04" />
+            </div>
+            <div>
+                <img class="hidden" src="./assets/images/hangman05.png" alt="hangman05" />
+            </div>
+            <div>
+                <img class="hidden" src="./assets/images/hangman06.png" alt="hangman06" />
+            </div>
+            <div>
+                <img class="hidden" src="./assets/images/hangman07.png" alt="hangman07" />
+            </div>
+            <div>
+                <img class="hidden" src="./assets/images/hangman08.png" alt="hangman08" />
+            </div>
+            <div>
+                <img class="hidden" src="./assets/images/hangman09.png" alt="hangman09" />
+            </div>
+        </div>
+        <div id="entryField">
+            <div id="secretWord"></div>
+            <div id="vkbd">
+                <div id="firstRow">
+                    <p class="key">A</p>
+                    <p class="key">Z</p>
+                    <p class="key">E</p>
+                    <p class="key">R</p>
+                    <p class="key">T</p>
+                    <p class="key">Y</p>
+                    <p class="key">U</p>
+                    <p class="key">I</p>
+                    <p class="key">O</p>
+                    <p class="key">P</p>
+                </div>
+                <div id="secondRow">
+                    <p class="key">Q</p>
+                    <p class="key">S</p>
+                    <p class="key">D</p>
+                    <p class="key">F</p>
+                    <p class="key">G</p>
+                    <p class="key">H</p>
+                    <p class="key">J</p>
+                    <p class="key">K</p>
+                    <p class="key">L</p>
+                    <p class="key">M</p>
+                </div>
+                <div id="thirdRow">
+                    <p class="key">W</p>
+                    <p class="key">X</p>
+                    <p class="key">C</p>
+                    <p class="key">V</p>
+                    <p class="key">B</p>
+                    <p class="key">N</p>
                 </div>
             </div>
-        </main>
-        <script src="./assets/script/script.js"></script>
-    </body>
+        </div>
+    </main>
+    <script src="./assets/script/script.js"></script>
+</body>
+
 </html>
