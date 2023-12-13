@@ -30,14 +30,11 @@ const play = document.querySelector("#playButton");
 const startWin = document.querySelector("#startWin");
 const secretWord = document.querySelector("#secretWord");
 const keys = document.querySelectorAll(".key");
-const lostRestartButton = document.querySelector("#lostRestartButton");
+const restartButton = document.querySelector("#restartButton");
 const restartWin = document.querySelector("#restartWin");
 const restartWinMsg = document.querySelector("#restartWin h2");
 const imgDiv = document.querySelectorAll("#hangman div img");
 const vkbd = document.querySelector("#vkbd p");
-// console.log(vkbd);
-// console.log(imgDiv);
-// const keyPlaceHolder = document.createElement("p");
 
 function removeAllChildNodes(parent) {
     while (parent.firstChild) {
@@ -73,9 +70,6 @@ const checkEachkey = (elmt) => {
     if (idx != -1) {
         while (idx != -1) {
             goodCount++;
-            console.log("goodcount :", goodCount);
-            console.log(elmt.innerHTML);
-            console.log(idx);
             let charChange = document.querySelectorAll("#secretWord p");
             charChange[idx].innerHTML = elmt.innerHTML;
             idx = currentWord.indexOf(elmt.innerHTML, idx + 1);
@@ -116,7 +110,7 @@ const restart = (msg) => {
     currentWord = [];
     let secretWordAll = document.getElementById("secretWord");
     removeAllChildNodes(secretWordAll);
-    lostRestartButton.addEventListener(
+    restartButton.addEventListener(
         "click",
         () => {
             keys.forEach((e) => {
@@ -139,7 +133,6 @@ const startGame = () => {
 
 const game = () => {
     currentWord = getRandomWord(words);
-    console.log(currentWord);
     displayWordPlaceholder(currentWord, "_");
 };
 

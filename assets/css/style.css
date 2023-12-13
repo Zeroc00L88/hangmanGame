@@ -43,6 +43,10 @@ h2 {
     padding: 10px;
 }
 
+#restartButton {
+    padding: 10px;
+}
+
 header {
     display: flex;
     justify-content: center;
