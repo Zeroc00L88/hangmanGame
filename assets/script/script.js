@@ -66,47 +66,42 @@ const displayWordPlaceholder = (word, placeholderChar) => {
     });
 };
 
-const controller = new AbortController();
-const { signal } = controller;
+const checkEachkey = (word, elmt, falseCount) => {
+    elmt.style.color = "rgba(0, 0, 0, 0)";
+    idx = word.indexOf(elmt.innerHTML);
+    if (idx != -1) {
+        while (idx != -1) {
+            console.log(elmt.innerHTML);
+            console.log(idx);
+            let charChange = document.querySelectorAll("#secretWord p");
+            charChange[idx].innerHTML = elmt.innerHTML;
+            idx = word.indexOf(elmt.innerHTML, idx + 1);
+        }
+    } else {
+        if (falseCount < 8) {
+            displayHangman(falseCount);
+            falseCount++;
+        } else {
+            displayHangman(falseCount);
+            falseCount = 0;
+            lostRestart();
+        }
+    }
+    return falseCount;
+};
+
 const checkKey = (word) => {
     let falseCount = 0;
+    console.log(falseCount);
     keys.forEach((elmt) => {
         elmt.style.color = "lightgrey";
-        const checkEachkey = () => {
-            elmt.style.color = "rgba(0, 0, 0, 0)";
-            idx = word.indexOf(elmt.innerHTML);
-            if (idx != -1) {
-                while (idx != -1) {
-                    console.log(elmt.innerHTML);
-                    console.log(idx);
-                    let charChange = document.querySelectorAll("#secretWord p");
-                    charChange[idx].innerHTML = elmt.innerHTML;
-                    idx = word.indexOf(elmt.innerHTML, idx + 1);
-                }
-            } else {
-                if (falseCount < 8) {
-                    displayHangman(falseCount);
-                    falseCount++;
-                } else {
-                    displayHangman(falseCount);
-                    falseCount = 0;
-                    lostRestart();
-                    // keys.forEach((e) => {
-                    // });
-                }
-            }
-        };
-        elmt.addEventListener(
-            "click",
-            checkEachkey,
-            { once: true },
-            { signal },
-        );
+        elmt.addEventListener("click", function eventkey() {
+            falseCount = checkEachkey(word, elmt, falseCount);
+        });
     });
 };
 
 const lostRestart = () => {
-    controller.abort();
     imgDiv.forEach((e) => e.classList.add("hidden"));
     lostWin.classList.toggle("hidden");
     currentWord = [];
