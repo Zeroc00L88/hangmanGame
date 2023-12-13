@@ -53,6 +53,7 @@ const getRandomWord = (array) => {
 
 const displayHangman = (counter) => {
     imgDiv[counter].classList.remove("hidden");
+    console.log(counter);
 };
 
 const displayWordPlaceholder = (word, placeholderChar) => {
@@ -75,6 +76,7 @@ const checkEachkey = (elmt) => {
             idx = currentWord.indexOf(elmt.innerHTML, idx + 1);
         }
         if (goodCount == currentWord.length) {
+            falseCount = 0;
             goodCount = 0;
             restart("Vous avez gagné");
         }
@@ -133,6 +135,7 @@ const startGame = () => {
 
 const game = () => {
     currentWord = getRandomWord(words);
+    console.log(currentWord);
     displayWordPlaceholder(currentWord, "_");
 };
 
