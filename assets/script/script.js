@@ -7,7 +7,6 @@ async function fetchRandomWords() {
     let data = await response.json();
     let word = strNoAccent(data[0].name);
     word = word.toUpperCase();
-    console.log(word);
     return Array.from(word);
 }
 
@@ -42,7 +41,6 @@ const getRandomWord = (array) => {
 
 const displayHangman = (counter) => {
     imgDiv[counter].classList.remove("hidden");
-    console.log(counter);
 };
 
 const displayWordPlaceholder = (word, placeholderChar) => {
@@ -76,6 +74,7 @@ const checkEachkey = (elmt) => {
         } else {
             displayHangman(falseCount);
             falseCount = 0;
+            goodCount = 0;
             restart("Vous avez perdu");
         }
     }
