@@ -1,27 +1,16 @@
-let words = [
-    "Avion",
-    "Banjo",
-    "Barbe",
-    "Bruit",
-    "Chien",
-    "Essai",
-    "Livre",
-    "Pomme",
-    "Rugby",
-    "Valse",
-    "Agneau",
-    "Aviron",
-    "Bouche",
-    "Grelot",
-    "Hochet",
-    "Limite",
-    "Poulpe",
-    "Puzzle",
-    "Quartz",
-    "Tomate",
-];
+function strNoAccent(a) {
+    return a.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+}
 
-words = words.map((e) => e.toUpperCase());
+async function fetchRandomWords() {
+    let response = await fetch("https://trouve-mot.fr/api/random");
+    let data = await response.json();
+    let word = strNoAccent(data[0].name);
+    word = word.toUpperCase();
+    console.log(word);
+    return Array.from(word);
+}
+
 let currentWord = [];
 let falseCount = 0;
 let goodCount = 0;
@@ -133,8 +122,8 @@ const startGame = () => {
     });
 };
 
-const game = () => {
-    currentWord = getRandomWord(words);
+const game = async () => {
+    currentWord = await fetchRandomWords();
     console.log(currentWord);
     displayWordPlaceholder(currentWord, "_");
 };
