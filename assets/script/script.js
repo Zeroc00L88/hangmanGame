@@ -105,11 +105,11 @@ const restart = (msg, path) => {
     });
     restartWin.classList.toggle("hidden");
     currentWord = [];
-    let secretWordAll = document.getElementById("secretWord");
-    removeAllChildNodes(secretWordAll);
     restartButton.addEventListener(
         "click",
         () => {
+            let secretWordAll = document.getElementById("secretWord");
+            removeAllChildNodes(secretWordAll);
             keys.forEach((e) => {
                 e.style.pointerEvents = "auto";
             });
